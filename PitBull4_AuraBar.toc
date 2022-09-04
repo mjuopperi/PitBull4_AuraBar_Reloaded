@@ -1,0 +1,8 @@
+## Interface: 70300
+## Title: PitBull4 AuraBar
+## Notes: Shows a countdown bar for the duration of auras (e.g. HoTs, DoTs)
+## Author: Vaeyl of Nozdormu
+## Dependencies: PitBull4
+## X-Revision: 24
+
+PitBull4_AuraBar.lua

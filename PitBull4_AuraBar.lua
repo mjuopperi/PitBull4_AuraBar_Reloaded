@@ -48,10 +48,7 @@ function PitBull4_AuraBar:GetValue(frame, bar_db)
 	if not frame.unit or not bar_db.aura then return end
 	local _, name, duration, expirationTime, source
 	if bar_db.friend and UnitIsFriend("player", frame.unit) or  bar_db.enemy and not UnitIsFriend("player", frame.unit) then
-		name , _, _, _, _, duration, expirationTime, source = UnitBuff(frame.unit, bar_db.aura, true)
-		if not name then 
-			name , _, _, _, _, duration, expirationTime, source = UnitDebuff(frame.unit, bar_db.aura, true)
-		end
+		name, _, _, _, duration, expirationTime, source = AuraUtil.FindAuraByName(bar_db.aura, frame.unit)
 	else
 		return nil
 	end	

@@ -49,6 +49,9 @@ function PitBull4_AuraBar:GetValue(frame, bar_db)
 	local _, name, duration, expirationTime, source
 	if bar_db.friend and UnitIsFriend("player", frame.unit) or  bar_db.enemy and not UnitIsFriend("player", frame.unit) then
 		name, _, _, _, duration, expirationTime, source = AuraUtil.FindAuraByName(bar_db.aura, frame.unit)
+		if not name then
+			name, _, _, _, duration, expirationTime, source = AuraUtil.FindAuraByName(bar_db.aura, frame.unit, "HARMFUL")
+		end
 	else
 		return nil
 	end	

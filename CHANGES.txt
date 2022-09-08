@@ -1,5 +1,5 @@
 changeset:   23:2238cea26477
-tag:         0.59
+tag:         0.59.0
 user:        Gawwad
 date:        Sat Sep 4 13:00:00 2022 +0200
 summary:     Bumped toc

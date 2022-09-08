@@ -1,0 +1,29 @@
+name: "Release"
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Create package
+      env:
+        VERSION: ${{ github.ref_name }}
+      run: |
+        mkdir -p PitBull4_AuraBar_Reloaded
+        cp CHANGES.txt PitBull4_AuraBar_Reloaded.lua PitBull4_AuraBar_Reloaded.toc PitBull4_AuraBar_Reloaded
+        zip -r "PitBull4_AuraBar_Reloaded_$VERSION.zip" PitBull4_AuraBar_Reloaded
+
+    - uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        prerelease: false
+        files: |
+          *.zip
